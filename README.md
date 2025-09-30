@@ -1,42 +1,30 @@
-# 📂 Tipos de Arquivos em Python
+# 📂 Resumo sobre Manipulação de Arquivos em Python
 
-Este repositório é um guia rápido sobre como **trabalhar com arquivos no Python**, utilizando a função `open()` e os principais modos de abertura.  
-A ideia é servir como referência simples para consulta e prática.
+Este repositório demonstra as principais formas de trabalhar com diferentes tipos de arquivos em Python. O código-fonte detalhado está disponível no notebook.
 
----
+## 1. Manipulação de Arquivos de Texto (.txt)
 
-## 🔑 O que você vai encontrar
-- Explicação da função **`open()`**.  
-- Exemplos de leitura e escrita em arquivos.  
-- Lista dos **modos de abertura de arquivos** (`r`, `w`, `x`, `a`, `b`, `t`, `+`).  
-- Exemplos práticos de como manipular arquivos.  
+-   **Abertura e Leitura**: Utiliza a função `open()` para ler arquivos. São demonstrados os métodos:
+    -   `read()`: Para ler todo o conteúdo do arquivo.
+    -   `readline()`: Para ler uma linha por vez.
+    -   `readlines()`: Para ler todas as linhas e armazená-las em uma lista, permitindo manipulações como a ordenação (`sort()`).
+-   **Modos de Abertura**: Explica os diferentes modos como `'r'` (leitura), `'w'` (escrita, sobrescreve), e `'a'` (anexar ao final).
+-   **Escrita**: Mostra como usar `arquivo.write()` para gravar conteúdo em um arquivo.
 
----
+## 2. Trabalhando com Arquivos CSV
 
-## 📝 Exemplos básicos
+-   **O que é**: Apresenta o formato CSV (Comma Separated Values) para dados tabulares.
+-   **Leitura e Escrita**: Utiliza a biblioteca nativa `csv` para ler (`csv.reader`) e escrever (`csv.writer`) em arquivos `.csv`, demonstrando como pular cabeçalhos e adicionar novas linhas.
 
-Abrindo e lendo um arquivo:
+## 3. Trabalhando com Arquivos JSON
 
-```python
-arquivo = open("teste.txt")
-print(arquivo.read())       # Lê todo o conteúdo
-print(arquivo.readline())   # Lê uma linha por vez
+-   **O que é**: Introduz o formato JSON (JavaScript Object Notation), ideal para troca de dados com sua estrutura de chave-valor.
+-   **Conversão e Manipulação**: Usa a biblioteca `json` para:
+    -   `json.dumps()`: Converter um dicionário Python em uma string JSON.
+    -   `json.dump()`: Salvar um dicionário diretamente em um arquivo `.json`.
+    -   `json.load()`: Carregar dados de um arquivo `.json` para um dicionário Python.
+    -   `json.loads()`: Converter uma string no formato JSON para um dicionário Python.
 
-```
-Escrevendo em um arquivo:
-```python
-conteudo = "Estou inserindo esse conteúdo no arquivo de texto"
+## ✅ Boas Práticas
 
-arquivo = open("texto.txt", "w")  # modo escrita
-arquivo.write(conteudo)
-arquivo.close()
-```
-## 📌 Modos de abertura
-
-- `'r'` → leitura (padrão)  
-- `'w'` → escrita (sobrescreve conteúdo)  
-- `'x'` → criação de arquivo (falha se já existir)  
-- `'a'` → escrita (anexa conteúdo ao final)  
-- `'b'` → modo binário  
-- `'t'` → modo texto (padrão)  
-- `'+'` → leitura e escrita  
+-   **Gerenciamento de Arquivos**: Enfatiza o uso do bloco `with open(...) as ...`, que garante que o arquivo seja fechado automaticamente após o uso, tornando o código mais seguro e limpo.
